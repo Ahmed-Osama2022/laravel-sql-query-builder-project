@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Users Index Page
+  Users index page
 @endsection
 
 
@@ -19,6 +19,7 @@
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Created Date</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
 
@@ -35,6 +36,11 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td>
+            <th scope="col">
+              {{-- Show the user by it's ID --}}
+              <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Edit</a>
+            </th>
+
           </tr>
         @endforeach
 

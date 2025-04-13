@@ -65,7 +65,17 @@ class UsersController extends Controller
    */
   public function show(string $id)
   {
-    //
+    /**
+     * There is a different methods
+     */
+
+    // NOTE: But this will force us to write the query!
+    // DB::table('users')->select('And make the query here');
+
+    $user =  DB::table('users')->find($id);
+    // dd($user);
+
+    return view('users.show', compact('user'));
   }
 
   /**
