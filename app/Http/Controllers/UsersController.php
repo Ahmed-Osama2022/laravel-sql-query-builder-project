@@ -15,7 +15,29 @@ class UsersController extends Controller
    */
   public function index()
   {
-    return view('users.index');
+    /**
+     * Create DUMMY_DATA for table users
+     */
+
+    // $users = Storage::json('public/users.json');
+
+    // $now = now();
+
+    // foreach ($users as $user) {
+    //   DB::table('users')->insert([
+    //     'name' => $user['name'],
+    //     'email' => $user['email'],
+    //     'password' => Hash::make($user['address']['zipcode']),
+    //     'password' => Hash::make($user['address']['zipcode']),
+    //     'created_at' => Carbon::now(),
+    //     'updated_at' => Carbon::now()->addHour()
+    //   ]);
+    // }
+
+    $users = DB::table('users')->get();
+    // dd($users);
+
+    return view('users.index', compact('users'));
   }
 
   /**
