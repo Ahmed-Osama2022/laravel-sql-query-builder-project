@@ -19,9 +19,11 @@ class UsersController extends Controller
      * Create DUMMY_DATA for table users
      */
 
-    // $users = Storage::json('public/users.json');
+    $users = Storage::json('public/users.json');
 
-    // $now = now();
+    $now = now();
+    // DB::table('users')->truncate();
+    // die();
 
     // foreach ($users as $user) {
     //   DB::table('users')->insert([
@@ -29,10 +31,12 @@ class UsersController extends Controller
     //     'email' => $user['email'],
     //     'password' => Hash::make($user['address']['zipcode']),
     //     'password' => Hash::make($user['address']['zipcode']),
-    //     'created_at' => Carbon::now(),
+    //     'created_at' => Carbon::now()->addMinutes(5),
     //     'updated_at' => Carbon::now()->addHour()
     //   ]);
     // }
+
+
 
     $users = DB::table('users')->get();
     // dd($users);
