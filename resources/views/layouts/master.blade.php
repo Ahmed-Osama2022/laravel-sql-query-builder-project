@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+  {{-- @vite('resources/js/app.js') --}}
   <title>@yield('title', 'Query Builder | Project')</title>
 </head>
 

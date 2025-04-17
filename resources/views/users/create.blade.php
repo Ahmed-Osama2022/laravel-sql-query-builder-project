@@ -1,25 +1,18 @@
 @extends('layouts.master')
 
 @section('title')
-  Users show page
+  Create User
 @endsection
 
 @section('content')
-  {{-- <div class="container mt-3">
-    <h1>Users Table</h1>
-  </div> --}}
-
   <div class="row mt-3">
-
+    <h1 class="mt-3">Create User</h1>
     <div class="col-6">
-      <form method="post" action="{{ route('users.update', $user->id) }}">
-
+      <form method="post" action="{{ route('users.store') }}">
         @csrf
-        @method('PUT')
-
         <div class="mb-3">
           <label for="user_name" class="form-label">Name</label>
-          <input name="name" type="text" value="{{ $user->name ?? 'User Not Found!' }}"
+          <input name="name" type="text" value="{{ old('name') }}"
                  class="form-control @error('name')
               is-invalid
           @enderror " id="user_name"
@@ -34,7 +27,7 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input name="email" type="text" value="{{ $user->email ?? 'User Not Found!' }}"
+          <input name="email" type="text" value="{{ old('email') }}"
                  class="form-control @error('email')
               is-invalid @enderror" id="email"
                  aria-describedby="emailInput">
@@ -62,21 +55,31 @@
         <div class="mb-3">
           <label for="confirmPass" class="form-label">Confirm password</label>
           <input name="password_confirmation" type="password"
-                 class="form-control @error('email')
+                 class="form-control @error('password_confirmation')
               is-invalid @enderror" id="confirmPass"
                  aria-describedby="confirmPassInput">
-
+          @error('password_confirmation')
+            <div id="confirmPassInput" class="form-text invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
           <label for="date" class="form-label">Date</label>
-          <input value="{{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}" name="created_at" type="date"
-                 class="form-control" id="date" aria-describedby="dateInput">
-          <div id="dateInput" class="form-text"> </div>
-        </div>
+          <input name="created_at" value="{{ old('created_at') }}" type="date"
+                 class="form-control  @error('created_at')
+              is-invalid
+          @enderror  " id="date"
+                 aria-describedby="dateInput">
+          @error('created_at')
+            <div id="confirmPassInput" class="form-text invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div> --}}
 
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Create</button>
       </form>
     </div>
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersStoreRequest;
+use App\Http\Requests\UsersUpdateRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -49,15 +51,57 @@ class UsersController extends Controller
    */
   public function create()
   {
-    //
+    return view('users.create');
   }
 
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(UsersStoreRequest $request)
   {
-    //
+    // This returns all the data from the request...
+    $inputs = $request->all();
+    /**
+     * Let's hash the password first!
+     */
+
+    // $password = '';
+    // foreach ($inputs as $key => $input) {
+    //   if ($key === 'password') {
+    //     $password =  Hash::make($input);
+    //     // dd($password);
+    //   }
+    // }
+
+
+    // From Chat-GPT
+    $allData = collect($request->all())
+      ->map(function ($input, $key) {
+        if ($key === 'password') {
+          return Hash::make($input);
+        }
+        return $input;
+      })
+      ->except(['_token', '_method', 'password_confirmation'])
+      ->merge([
+        'created_at' => Carbon::now()
+      ])
+      ->toArray();
+
+    // $allData = collect($request->all())
+    //   ->except(['_token', '_method', 'password_confirmation'])
+    //   ->merge([
+    //     'created_at' => Carbon::now()
+    //   ])
+    //   ->toArray();
+
+    /**
+     * Insrting data into DB
+     */
+    DB::table('users')
+      ->insert($allData);
+
+    return redirect()->route('users.index');
   }
 
   /**
@@ -72,7 +116,7 @@ class UsersController extends Controller
     // NOTE: But this will force us to write the query!
     // DB::table('users')->select('And make the query here');
 
-    $user =  DB::table('users')->find($id);
+    $user = DB::table('users')->find($id);
     // dd($user);
 
     return view('users.show', compact('user'));
@@ -89,9 +133,39 @@ class UsersController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UsersUpdateRequest $request, string $id)
   {
-    //
+
+    // This returns all the data from the request...
+    $inputs = $request->all();
+
+    // dd($inputs);
+    // This returns only the data that passes the validation...
+    // $allData = $request->safe();
+    /**
+     * Let's combine the two methods and merge them with others to see the to output what we want
+     */
+    // $allData = $request->safe()->merge($inputs)->except(['_token', '_method']);
+
+    // But here I want => this approach
+    // $allData = $request->all()->except(['_token', '_method']); // Can't be Done ('Call to a member function except() on array')
+    // dd($request->collect()->except(['_token', '_method']));
+
+    // From Chat-GPT
+    $allData = collect($request->all())->except(['_token', '_method', 'password_confirmation'])->toArray();
+
+    // dd($allData);
+
+    /**
+     * Insrting data into DB
+     */
+    DB::table('users')
+      ->where('id', $id)
+      ->update($allData);
+
+    // return 'Done!';
+
+    return redirect()->route('users.index');
   }
 
   /**
