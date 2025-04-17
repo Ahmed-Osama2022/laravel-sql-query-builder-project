@@ -1,4 +1,31 @@
+body {
+  background-image: linear-gradient(160deg, #ff656a, #f0f0f0);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
 a {
   color: unset;
   text-decoration: unset;
+}
+
+form input {
+  background-color: #f0f0f0d7 !important;
+}
+
+form input:focus {
+  background-color: #f0f0f0 !important;
+}
+
+.table {
+  backdrop-filter: blur(40px) !important;
+
+}
+
+table thead,
+tr,
+td,
+th {
+  background-color: transparent !important;
 }

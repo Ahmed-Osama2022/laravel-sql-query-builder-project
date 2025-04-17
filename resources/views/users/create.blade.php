@@ -14,8 +14,9 @@
 
 
   <div class="row mt-3">
-    <h1 class="mt-3">Create User</h1>
-    <div class="col-6">
+
+    <div class="col-8 col-lg-10  mx-auto mx-0">
+      <h1 class="mt-3">Create User</h1>
       <form method="post" action="{{ route('users.store') }}">
         @csrf
         <div class="mb-3">

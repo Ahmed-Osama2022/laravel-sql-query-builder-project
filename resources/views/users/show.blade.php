@@ -5,15 +5,10 @@
 @endsection
 
 @section('content')
-  {{-- <div class="container mt-3">
-    <h1>Users Table</h1>
-  </div> --}}
-
   <div class="row mt-3">
 
-    <div class="col-6">
+    <div class="col-8 col-lg-10  mx-auto mx-0">
       <form method="post" action="{{ route('users.update', $user->id) }}">
-
         @csrf
         @method('PUT')
 
@@ -30,7 +25,6 @@
             </div>
           @enderror
         </div>
-
 
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
@@ -65,7 +59,6 @@
                  class="form-control @error('email')
               is-invalid @enderror" id="confirmPass"
                  aria-describedby="confirmPassInput">
-
         </div>
 
         <div class="mb-3">
@@ -74,7 +67,6 @@
                  class="form-control" id="date" aria-describedby="dateInput">
           <div id="dateInput" class="form-text"> </div>
         </div>
-
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

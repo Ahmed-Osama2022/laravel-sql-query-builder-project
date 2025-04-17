@@ -13,10 +13,9 @@
     </button>
   </div>
 
-
   <div class="row">
     <div class="table-responsive">
-      <table class="table table-hover">
+      <table class="table table-hover shadow">
         <thead class="table-active">
           <tr>
             <th scope="col">#</th>
