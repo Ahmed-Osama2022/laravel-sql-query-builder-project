@@ -171,6 +171,12 @@ class UsersController extends Controller
    */
   public function destroy(string $id)
   {
-    return 'Delete';
+    // DB::table('users')->find($id)->delete(); // BUG: forget '->where()'
+    DB::table('users')
+      ->where('id', $id)
+      ->delete();
+
+    return redirect()->back();
+    // return 'Delete';
   }
 }

@@ -19,7 +19,7 @@
         <thead class="table-active">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">ID</th>
+            <th scope="col">User ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Created Date</th>
@@ -29,14 +29,13 @@
         </thead>
 
         <tbody>
-
           {{-- Loop using $users in the DB --}}
           {{-- NOTE: Test to make sure the variable is passed to the view with correctly! --}}
           {{-- {{ dd($users) }}  --}}
           @foreach ($users as $user)
             <tr>
-              {{-- <th scope="row">{{ $loop->index + 1 }}</th> --}}
-              <th scope="row"></th>
+              <th scope="row">{{ $loop->index + 1 }}</th>
+              {{-- <th scope="row"></th> --}}
               <th>{{ $user->id }}</th>
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
@@ -46,9 +45,13 @@
                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Edit</a>
               </th>
               <th>
-                <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger">delete</a>
-              </th>
+                <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                  @csrf
+                  @method('delete')
 
+                  <button type="submit"class="btn btn-danger">Delete</button>
+                </form>
+              </th>
             </tr>
           @endforeach
 
