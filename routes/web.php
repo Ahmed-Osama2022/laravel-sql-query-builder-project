@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('layouts.master');
+  return view('welcome');
 })->name('home');
 
 Route::resource('users', UsersController::class);

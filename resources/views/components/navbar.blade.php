@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg shadow bg-transparent">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><span class="fw-bold">Laravel</span><br>Users CRUD<br>App</a>
+    <a class="navbar-brand" href="{{ route('home') }}"><span class="fw-bold">Laravel</span><br>Users CRUD<br>App</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
