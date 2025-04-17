@@ -13,7 +13,9 @@
 </head>
 
 <body>
-  <x-navbar></x-navbar>
+  {{-- <x-navbar></x-navbar> --}}
+  {{-- OR: the most common use --}}
+  @include('partials.navbar')
 
   <div class="container">
     @yield('content')
