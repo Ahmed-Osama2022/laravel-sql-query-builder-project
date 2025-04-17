@@ -24,6 +24,7 @@
             <th scope="col">Email</th>
             <th scope="col">Created Date</th>
             <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
 
@@ -43,6 +44,9 @@
               <th scope="col">
                 {{-- Show the user by it's ID --}}
                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Edit</a>
+              </th>
+              <th>
+                <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger">delete</a>
               </th>
 
             </tr>
