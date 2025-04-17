@@ -38,8 +38,6 @@ class UsersController extends Controller
     //   ]);
     // }
 
-
-
     $users = DB::table('users')->get();
     // dd($users);
 

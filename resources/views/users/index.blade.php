@@ -8,7 +8,11 @@
 @section('content')
   <div class="container mt-3">
     <h1>Users Table</h1>
+    <button class="my-3 btn btn-success">
+      <a href="{{ route('users.create') }}">Create a new user</a>
+    </button>
   </div>
+
 
   <div class="row">
     <div class="table-responsive">

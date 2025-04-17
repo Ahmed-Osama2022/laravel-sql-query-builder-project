@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+  {{-- Inspect the errors; to makw sure the data is passed successfully --}}
+  {{-- @if ($errors->any()) --}}
+  {{-- @foreach ($errors as $error) --}}
+  {{-- {{ $error }} --}}
+  {{-- @endforeach --}}
+  {{-- @endif --}}
+
+
   <div class="row mt-3">
     <h1 class="mt-3">Create User</h1>
     <div class="col-6">
