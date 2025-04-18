@@ -38,8 +38,9 @@ class SearchController extends Controller
 
 
 
+    $title = 'Search results';
     // return $users;
-    return view('users.index', compact('users'));
+    return view('users.index', compact(['users', 'title']));
 
     // dd($request->search());
   }

@@ -7,7 +7,7 @@
 
 @section('content')
   <div class="container mt-3">
-    <h1>{{ $search_result ?? ' Users Table' }}</h1>
+    <h1>{{ $title ?? ' Users Table' }}</h1>
 
     {{-- Buttons for delete All && create dummy from beginning  --}}
     <div class="d-flex  align-items-center flex-row">
