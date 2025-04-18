@@ -202,5 +202,11 @@ class UsersController extends Controller
   /**
    * Deleteing all the data in table for resource
    */
-  public function delete_all(Request $request) {}
+  public function delete_all(Request $request)
+  {
+
+    DB::table('users')->truncate();
+
+    return redirect()->back();
+  }
 }

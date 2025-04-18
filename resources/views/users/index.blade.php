@@ -18,9 +18,9 @@
         </button>
       </form>
 
-      <form method="POST" action="">
+      <form method="POST" action="{{ route('users.deleteall') }}">
         @csrf
-        <button type="submit" class="my-3 ms-4 btn btn-success">
+        <button type="submit" class="my-3 ms-4 btn btn-danger">
           Delete All
         </button>
       </form>

@@ -43,8 +43,11 @@ class UsersStoreRequest extends FormRequest
       'name.required' => 'Name is required',
       'name.min' => 'Name must be at least 3 characters',
       'email.required' => 'Email is required',
-      'email.email' => 'Email must be a valid email address'
-
+      'email.email' => 'Email must be a valid email address',
+      // for password
+      // 'password.required' => 'A password is required',
+      // 'password.confirmed' => 'Password confirmation does not match',
+      'password.min' => 'Password must be at least :min characters',
     ];
   }
 }

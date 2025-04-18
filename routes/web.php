@@ -24,6 +24,11 @@ Route::resource('users', UsersController::class);
 
 Route::post('/create/dummy', [UsersController::class, 'created_dummy_users'])
   ->name('users.create.dummy');
+
+Route::post('/users/delete', [UsersController::class, 'delete_all'])
+  ->name('users.deleteall');
+
+
 /**
  * 1- Will use the timezone from config/app.php
  * 'timezone' => env('TIME_ZONE', 'UTC'),
