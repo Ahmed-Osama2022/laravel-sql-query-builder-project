@@ -61,12 +61,12 @@
                  aria-describedby="confirmPassInput">
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
           <label for="date" class="form-label">Date</label>
           <input value="{{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}" name="created_at" type="date"
                  class="form-control" id="date" aria-describedby="dateInput">
           <div id="dateInput" class="form-text"> </div>
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

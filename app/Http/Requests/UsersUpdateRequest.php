@@ -31,7 +31,7 @@ class UsersUpdateRequest extends FormRequest
       // 'email' => 'required|email|unique:users|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
       'email' => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
       // 'email' => 'required|email:rfc,dns',
-      // 'password' => 'required|confirmed|min:6',
+      'password' => 'required|confirmed|min:3',
       // OR; we could make any validation rules in an array
       // 'password' => ['required', 'confirmed',   Password::min(2)->mixedCase()->numbers()],
 

@@ -172,14 +172,18 @@ class UsersController extends Controller
     // From Chat-GPT
     $allData = collect($request->all())->except(['_token', '_method', 'password_confirmation'])->toArray();
 
-    // dd($allData);
+    // Try to add the current time stamp at updated_at now "ME"
+    // Add updated_at timestamp
+    $allData['updated_at'] = now();
 
+    // dd($allData);
     /**
      * Insrting data into DB
      */
     DB::table('users')
       ->where('id', $id)
       ->update($allData);
+
 
     // return 'Done!';
 
@@ -212,8 +216,8 @@ class UsersController extends Controller
         'name' => $user['name'],
         'email' => $user['email'],
         'password' => Hash::make($user['email']),
-        'created_at' => $time->addHour(),
-        'updated_at' => $time->addHour(),
+        'created_at' => now(),
+        'updated_at' => now(),
       ]);
     }
     return redirect()->back();

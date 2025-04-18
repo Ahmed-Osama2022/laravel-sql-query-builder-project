@@ -50,6 +50,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Created Date</th>
+            <th scope="col">Updated Date</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
@@ -67,6 +68,7 @@
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
               <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td>
+              <td>{{ Carbon\Carbon::parse($user->updated_at)->diffForHumans() }}</td>
               <th scope="col">
                 {{-- Show the user by it's ID --}}
                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Edit</a>
@@ -75,7 +77,6 @@
                 <form action="{{ route('users.destroy', $user->id) }}" method="post">
                   @csrf
                   @method('delete')
-
                   <button type="submit"class="btn btn-danger">Delete</button>
                 </form>
               </th>
