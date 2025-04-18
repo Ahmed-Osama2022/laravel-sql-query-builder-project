@@ -7,7 +7,7 @@
 
 @section('content')
   <div class="container mt-3">
-    <h1>Users Table</h1>
+    <h1>{{ $search_result ?? ' Users Table' }}</h1>
 
     {{-- Buttons for delete All && create dummy from beginning  --}}
     <div class="d-flex  align-items-center flex-row">
@@ -25,6 +25,16 @@
           Delete All
         </button>
       </form>
+
+      <form method="POST" action="{{ route('users.create.fake') }}">
+        @csrf
+        <button type="submit" class="my-3 ms-4 btn btn-warning">
+          Create fake users
+        </button>
+      </form>
+
+
+
     </div>
     {{-- End Buttons --}}
 

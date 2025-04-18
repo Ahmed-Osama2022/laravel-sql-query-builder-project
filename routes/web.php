@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UsersController;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,17 @@ Route::get('/', function () {
 
 Route::resource('users', UsersController::class);
 
-
 Route::post('/create/dummy', [UsersController::class, 'created_dummy_users'])
   ->name('users.create.dummy');
+
+Route::post('/create/fake', [UsersController::class, 'created_fake_users'])
+  ->name('users.create.fake');
 
 Route::delete('/delete/users', [UsersController::class, 'delete_all'])
   ->name('users.deleteall');
 
+Route::post('/users/search', [SearchController::class, 'index'])
+  ->name('users.search');
 
 /**
  * 1- Will use the timezone from config/app.php

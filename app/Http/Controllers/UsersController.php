@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Faker\Factory;
+
 
 class UsersController extends Controller
 {
@@ -22,7 +24,6 @@ class UsersController extends Controller
      */
 
     $users = Storage::json('public/users.json');
-
     $now = now();
     // DB::table('users')->truncate();
     // die();
@@ -38,9 +39,29 @@ class UsersController extends Controller
     //   ]);
     // }
 
-    $users = DB::table('users')->get();
-    // dd($users);
+    /**
+     * This is the regular query
+     */
+    // $users = DB::table('users')->get();
 
+    /**
+     * Or you could use this advanced
+     * From Lesson => 18
+     * 18. Using advanced select DB queries
+     */
+    // $users = DB::table('users')->select('name')->orderBy('name', 'asc')->get();
+    // $users = DB::table('users')->orderBy('id', 'asc')->get();
+    // $users = DB::table('users')->orderBy('id', 'desc')->get(); // default is 'asc'
+    $users = DB::table('users')->orderBy('id', 'desc')->get();
+
+    // $users = DB::table('users')->whereIn('id', [3, 5, 7])->get();
+
+    // $query = DB::table('users')->select('email');
+
+    // $users  = $query->addSelect('id')->get();
+
+    // | ================================================================================= |
+    // dd($users);
     return view('users.index', compact('users'));
   }
 
@@ -70,7 +91,6 @@ class UsersController extends Controller
     //     // dd($password);
     //   }
     // }
-
 
     // From Chat-GPT
     $allData = collect($request->all())
@@ -199,6 +219,27 @@ class UsersController extends Controller
     return redirect()->back();
   }
 
+  /**
+   * Create Dummy Data in a database table
+   */
+  public function created_fake_users(Request $request)
+  {
+    // use the factory to create a Faker\Generator instance
+    $faker = Factory::create();
+    // dd(now());
+
+    for ($i = 0; $i < 50; $i++) {
+      DB::table('users')->insert([
+        'name' => $faker->name(),
+        'email' => $faker->email(),
+        'password' => Hash::make($faker->password(8)),
+        'created_at' => now(),
+        'updated_at' => now(),
+      ]);
+    }
+    // dd();
+    return redirect()->back();
+  }
   /**
    * Deleteing all the data in table for resource
    */
