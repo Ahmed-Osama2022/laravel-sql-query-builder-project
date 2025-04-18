@@ -22,7 +22,7 @@ class UsersController extends Controller
     /**
      * Create DUMMY_DATA for table users
      */
-
+    $paginator_status = true;
     $users = Storage::json('public/users.json');
     $now = now();
     // DB::table('users')->truncate();
@@ -62,7 +62,18 @@ class UsersController extends Controller
 
     // | ================================================================================= |
     // dd($users);
-    return view('users.index', compact('users'));
+
+    /**
+     * New Concept
+     * Learning about offset and cursor Pagination
+     * Pagination is the process of dividing large sets of data (like a list of products, users, posts, etc.) into smaller chunks called pages. Instead of showing all items at once, you show, for example, 10 or 20 per page, and allow the user to navigate between them (Next, Previous, Page 1, 2, 3...).
+     */
+    $users = DB::select('SELECT * FROM users ORDER BY id ASC LIMIT 10 OFFSET 10'); // This is the regular Pagination and called ("Offset Pagination")
+
+    $users = DB::table('users')->paginate(10);
+    // dd($users);
+
+    return view('users.index', compact('users', 'paginator_status'));
   }
 
   /**

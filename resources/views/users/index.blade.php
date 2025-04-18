@@ -106,6 +106,8 @@
     </div>
 
   </div>
+  {{-- Pagination --}}
+  {{ $paginator_status ? $users->links() : '' }}
 @endsection
 
 

@@ -7,24 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
+  public bool $paginator_status;
+
+
   /**
-   * Search in the users by
+   * Implement the search functionality
    */
-  public function index(Request $request)
+  public function search_users(Request $request)
   {
-
     $search_data = $request->except(['_token']);
-    // dd($search_data['search']);
-
-    // $query =  DB::table('users')->whereAll(
-    //   [
-    //     'name',
-    //     'email'
-    //   ],
-    //   'LIKE',
-
-    // )->get();
-
     $searchColumns = ['name', 'email'];
     $searchTerm = $search_data['search'];
 
@@ -36,12 +27,9 @@ class SearchController extends Controller
         '%' .  $searchTerm . '%'
       )->get();  // Wildcards on both sides)
 
-
-
     $title = 'Search results';
+    $paginator_status = false;
     // return $users;
-    return view('users.index', compact(['users', 'title']));
-
-    // dd($request->search());
+    return view('users.index', compact(['users', 'title', 'paginator_status']));
   }
 }

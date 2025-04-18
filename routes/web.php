@@ -31,7 +31,7 @@ Route::post('/create/fake', [UsersController::class, 'created_fake_users'])
 Route::delete('/delete/users', [UsersController::class, 'delete_all'])
   ->name('users.deleteall');
 
-Route::post('/users/search', [SearchController::class, 'index'])
+Route::post('/users/search', [SearchController::class, 'search_users'])
   ->name('users.search');
 
 /**
