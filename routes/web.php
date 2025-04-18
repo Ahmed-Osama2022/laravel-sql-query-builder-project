@@ -25,7 +25,7 @@ Route::resource('users', UsersController::class);
 Route::post('/create/dummy', [UsersController::class, 'created_dummy_users'])
   ->name('users.create.dummy');
 
-Route::post('/users/delete', [UsersController::class, 'delete_all'])
+Route::delete('/delete/users', [UsersController::class, 'delete_all'])
   ->name('users.deleteall');
 
 

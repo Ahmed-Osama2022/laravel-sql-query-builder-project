@@ -20,6 +20,7 @@
 
       <form method="POST" action="{{ route('users.deleteall') }}">
         @csrf
+        @method('delete')
         <button type="submit" class="my-3 ms-4 btn btn-danger">
           Delete All
         </button>

@@ -204,7 +204,6 @@ class UsersController extends Controller
    */
   public function delete_all(Request $request)
   {
-
     DB::table('users')->truncate();
 
     return redirect()->back();
