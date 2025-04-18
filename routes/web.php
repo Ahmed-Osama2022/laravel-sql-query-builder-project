@@ -22,12 +22,15 @@ Route::get('/', function () {
 Route::resource('users', UsersController::class);
 
 
+Route::post('/create/dummy', [UsersController::class, 'created_dummy_users'])
+  ->name('users.create.dummy');
+/**
+ * 1- Will use the timezone from config/app.php
+ * 'timezone' => env('TIME_ZONE', 'UTC'),
+ * 2- Add TIME_ZONE='Africa/Cairo' in /.env file
+ */
 Route::get('/time', function () {
-  /**
-   * 1- Will use the timezone from config/app.php
-   * 'timezone' => env('TIME_ZONE', 'UTC'),
-   * 2- Add TIME_ZONE='Africa/Cairo' in /.env file
-   */
+
   $now = now(); // Laravel helper
   // dd($now);
   // echo  $carbon = Carbon::now(); // Direct Carbon usage

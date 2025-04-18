@@ -179,4 +179,28 @@ class UsersController extends Controller
     return redirect()->back();
     // return 'Delete';
   }
+
+  /**
+   * Create Dummy Data in a database table
+   */
+  public function created_dummy_users(Request $request)
+  {
+    $users = Storage::json('public/users.json');
+    $time = Carbon::now();
+    foreach ($users as $user) {
+      DB::table('users')->insert([
+        'name' => $user['name'],
+        'email' => $user['email'],
+        'password' => Hash::make($user['email']),
+        'created_at' => $time->addHour(),
+        'updated_at' => $time->addHour(),
+      ]);
+    }
+    return redirect()->back();
+  }
+
+  /**
+   * Deleteing all the data in table for resource
+   */
+  public function delete_all(Request $request) {}
 }

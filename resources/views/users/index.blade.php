@@ -8,9 +8,25 @@
 @section('content')
   <div class="container mt-3">
     <h1>Users Table</h1>
-    <button class="my-3 btn btn-success">
-      <a href="{{ route('users.create') }}">Create a new user</a>
-    </button>
+
+    {{-- Buttons for delete All && create dummy from beginning  --}}
+    <div class="d-flex  align-items-center flex-row">
+      <form method="POST" action="{{ route('users.create.dummy') }}">
+        @csrf
+        <button type="submit" class="my-3 btn btn-success">
+          Create DUMMY users
+        </button>
+      </form>
+
+      <form method="POST" action="">
+        @csrf
+        <button type="submit" class="my-3 ms-4 btn btn-success">
+          Delete All
+        </button>
+      </form>
+    </div>
+    {{-- End Buttons --}}
+
   </div>
 
   <div class="row">
