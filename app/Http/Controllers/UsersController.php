@@ -71,9 +71,12 @@ class UsersController extends Controller
     $users = DB::select('SELECT * FROM users ORDER BY id ASC LIMIT 10 OFFSET 10'); // This is the regular Pagination and called ("Offset Pagination")
 
     $users = DB::table('users')->paginate(10);
+    // $users = DB::table('users')->simplePaginate(10);
+
+    $total_pages = $users->total();
     // dd($users);
 
-    return view('users.index', compact('users', 'paginator_status'));
+    return view('users.index', compact('users', 'paginator_status', 'total_pages'));
   }
 
   /**

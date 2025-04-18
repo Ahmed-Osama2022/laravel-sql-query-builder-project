@@ -107,6 +107,7 @@
 
   </div>
   {{-- Pagination --}}
+  <div class="text-muted"></div>
   {{ $paginator_status ? $users->links() : '' }}
 @endsection
 

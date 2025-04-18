@@ -32,3 +32,9 @@ th {
 .welcome {
   color: rgba(0, 0, 0, .65)
 }
+
+.page-link {
+  /* background-color: rgba(255, 255, 255, 0.35); */
+  background-color: transparent;
+  color: #232323;
+}
