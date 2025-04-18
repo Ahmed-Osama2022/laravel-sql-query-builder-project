@@ -107,7 +107,9 @@
 
   </div>
   {{-- Pagination --}}
-  <div class="text-muted"></div>
+  <div class="text-muted my-3">
+    Total Pages: {{ $total_pages ?? '' }}
+  </div>
   {{ $paginator_status ? $users->links() : '' }}
 @endsection
 

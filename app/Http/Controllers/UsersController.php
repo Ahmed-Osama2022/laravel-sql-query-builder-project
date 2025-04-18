@@ -72,7 +72,10 @@ class UsersController extends Controller
 
     $users = DB::table('users')->paginate(10);
     // $users = DB::table('users')->simplePaginate(10);
-
+    /**
+     *  NOTE: there is a lot of chanining methiods available we could use;
+     * But it doesn't exists in the 'simplePaginate()'
+     */
     $total_pages = $users->total();
     // dd($users);
 
